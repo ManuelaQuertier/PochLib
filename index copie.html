@@ -4,11 +4,23 @@
 		<title>Poch'Lib</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link href="index.css" rel="stylesheet">
   	</head>
   	<body>
 		<div id="myBooks">
 			<h1 class="title">Poch'Lib</h1>
-			<h2 class="h2">Nouveau Livre</h2>
+			<h2>Nouveau Livre</h2>
+			<div class="form">
+				<button class="button">Ajouter un Livre</button>
+				<form action="">
+					<label for="bookTitle">Titre du livre</label>
+					<input type="text" id="bookTitle" name="bookTitle">
+					<label for="author">Auteur</label>
+					<input type="text" id="author" name="author">
+					<input type="submit" value="Rechercher">
+					<input type="submit" value="Annuler">
+				</form>
+			</div>
 			<hr>
 			<div id="content">
 				<h2>Ma poch'liste</h2>
