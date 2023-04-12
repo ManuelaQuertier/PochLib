@@ -55,7 +55,7 @@ h1 {
  }
 
  form {
-    display: flex;
+    display: none;
     flex-direction: column;
     width: 100%;
  }
