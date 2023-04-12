@@ -1,32 +1,39 @@
 <!DOCTYPE html>
 <html lang="fr">
-	<head>
-		<title>Poch'Lib</title>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<link href="index.css" rel="stylesheet">
-  	</head>
-  	<body>
-		<div id="myBooks">
-			<h1 class="title">Poch'Lib</h1>
-			<img src="assets/logo.svg" alt="logo" id="logo">
-			<h2>Nouveau Livre</h2>
-			<div class="form">
-				<button type="button" class="button" id="addBook">Ajouter un Livre</button>
-				<form action="" id="form">
-					<label for="bookTitle">Titre du livre</label>
-					<input type="text" id="bookTitle" name="bookTitle">
-					<label for="author">Auteur</label>
-					<input type="text" id="author" name="author">
-					<input type="submit" value="Rechercher" id="search">
-					<input type="submit" value="Annuler" id="cancel">
-				</form>
-			</div>
-			<hr>
-			<div id="content">
-				<h2>Ma poch'liste</h2>
-			</div>
-		</div>
-		<script type="text/javascript" src="javascript.js"></script>
-  	</body>
+  <head>
+    <title>Poch'Lib</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link href="index.css" rel="stylesheet" />
+  </head>
+  <body>
+    <main class="container">
+      <div class="newBooks">
+        <img src="assets/logo.svg" alt="logo" id="logo" />
+        <div class="form">
+          <h2>Nouveau Livre</h2>
+          <button type="button" class="button" id="addBook">
+            Ajouter un Livre
+          </button>
+          <form action="" id="form">
+            <div class="form_field">
+              <label for="bookTitle">Titre du livre</label>
+              <input type="text" id="bookTitle" name="bookTitle" />
+            </div>
+            <div class="form_field">
+              <label for="author">Auteur</label>
+              <input type="text" id="author" name="author" />
+            </div>
+            <input type="submit" value="Rechercher" id="search" class="button" />
+            <input type="submit" value="Annuler" id="cancel" class="button" />
+          </form>
+        </div>
+      </div>
+      <hr />
+      <div class="myBooks" id="content">
+        <h2>Ma poch'liste</h2>
+      </div>
+    </main>
+    <script type="text/javascript" src="javascript.js"></script>
+  </body>
 </html>
