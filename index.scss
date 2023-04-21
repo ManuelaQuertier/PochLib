@@ -1,0 +1,65 @@
+@import url('https://fonts.googleapis.com/css2?family=Dosis:wght@200&family=Oxygen&display=swap');
+
+body {
+    padding: 15px;
+    font-family: 'Oxygen', sans-serif;
+}
+
+h1 {
+    text-align: center;
+    background-color: lightgray;
+    font-family: 'Dosis', sans-serif;
+    padding: 15px;
+    margin: 0;
+}
+
+#logo {
+   display: block;
+   width: 25%;
+   height: auto;
+   margin: auto;
+}
+
+ h2 {
+    text-align: center;
+ }
+
+ .form{
+ display: flex;
+ align-items: center;
+ flex-direction: column;
+ padding: 5px;
+ }
+
+ input {
+    margin: 10px;
+    padding: 5px;
+ }
+
+ .button {
+    width: 15em;
+    height: 3em;
+    background-color: #82c9b8;
+    border: none;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    margin: 6px 2px;
+    cursor: pointer;
+    border-radius: 4px;
+ }
+
+ #cancel {
+   background-color: rgb(250, 98, 78);
+ }
+
+ form {
+    display: none;
+    flex-direction: column;
+    width: 100%;
+ }
+ .form_field{
+   display: flex;
+   flex-direction: column;
+ }
