@@ -1,4 +1,11 @@
 @import url("https://fonts.googleapis.com/css2?family=Dosis:wght@200&family=Oxygen&display=swap");
+.logo img {
+  display: block;
+  width: 35%;
+  height: auto;
+  margin: auto;
+}
+
 body {
   padding: 15px;
   font-family: "Oxygen", sans-serif;
@@ -6,33 +13,32 @@ body {
 
 h1 {
   text-align: center;
-  background-color: lightgray;
   font-family: "Dosis", sans-serif;
-  padding: 15px;
-  margin: 0;
 }
 
-#logo {
-  display: block;
-  width: 25%;
-  height: auto;
-  margin: auto;
-}
-
-h2 {
-  text-align: center;
-}
-
-.form {
+.newBook {
   display: flex;
   align-items: center;
   flex-direction: column;
   padding: 5px;
 }
 
-input {
+.form {
+  display: none;
+  flex-direction: column;
+  width: 100%;
+}
+.form__field {
+  display: flex;
+  flex-direction: column;
+}
+.form__field input {
   margin: 10px;
   padding: 5px;
+}
+
+.searchResult {
+  display: none;
 }
 
 .button {
@@ -41,27 +47,14 @@ input {
   background-color: #82c9b8;
   border: none;
   color: white;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
+  font-family: "Oxygen", sans-serif;
+  font-size: 0.7rem;
   margin: 6px 2px;
   cursor: pointer;
   border-radius: 4px;
 }
-
-#cancel {
+.button--cancel {
   background-color: rgb(250, 98, 78);
-}
-
-form {
-  display: none;
-  flex-direction: column;
-  width: 100%;
-}
-
-.form_field {
-  display: flex;
-  flex-direction: column;
 }
 
 /*# sourceMappingURL=index.css.map */
