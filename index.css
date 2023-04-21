@@ -57,4 +57,28 @@ h1 {
   background-color: rgb(250, 98, 78);
 }
 
+.books-Container {
+  display: grid;
+  gap: 10px;
+  padding: 10px;
+}
+@media screen and (min-width: 600px) {
+  .books-Container {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.book {
+  background-color: lightgrey;
+  border: 1px solid black;
+  padding: 15px;
+}
+.book__img {
+  width: 75%;
+  height: auto;
+  object-fit: contain;
+  display: block;
+  margin: auto;
+}
+
 /*# sourceMappingURL=index.css.map */
