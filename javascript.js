@@ -1,8 +1,10 @@
 const add = document.getElementById("addBook");
 const search= document.getElementById("search");
+const cancel= document.getElementById("cancel");
 
 add.addEventListener("click", noneToFlex);
 search.addEventListener("click", getSearchResult);
+//cancel.addEventListener("click", cancelSearch);
 
 function noneToFlex(){
     document.getElementById("form").style.display="flex";
