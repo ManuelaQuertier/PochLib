@@ -11,7 +11,7 @@ function noneToFlex(){
 }
 
 
-const yourAPIKey ="AIzaSyB7zsIsltMlGWit9tqlm--sjmNDB_4OuN0";
+const yourAPIKey = config.MY_KEY;
 
 async function getSearchResult(){
 
