@@ -2,7 +2,6 @@ const add = document.getElementById("addBook");
 const search= document.getElementById("search");
 const cancel= document.getElementById("cancel");
 
-
 add.addEventListener("click", () => {
     document.getElementById("form").style.display="flex";
 });
@@ -54,4 +53,5 @@ bookElement.appendChild(imgBook);
 const sectionBook = document.getElementById("books-result");
 sectionBook.appendChild(bookElement);
 }
+
 }
