@@ -45,9 +45,14 @@ h1 {
   }
 }
 
-//.searchResult {
- // display: none;
-//}
+.searchResult {
+display: none;
+flex-direction: column;
+}
+
+hr {
+ width: 100%;
+}
 
 .button {
   width: 15em;

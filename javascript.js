@@ -2,13 +2,19 @@ const add = document.getElementById("addBook");
 const search= document.getElementById("search");
 const cancel= document.getElementById("cancel");
 
-add.addEventListener("click", noneToFlex);
-search.addEventListener("click", getSearchResult);
-//cancel.addEventListener("click", cancelSearch);
+
+add.addEventListener("click", () => {
+    document.getElementById("form").style.display="flex";
+});
 
 function noneToFlex(){
-    document.getElementById("form").style.display="flex";
+    document.getElementById("searchResults").style.display="flex";
 }
+
+search.addEventListener("click", noneToFlex, true);
+search.addEventListener("click", getSearchResult, true);
+//cancel.addEventListener("click", cancelSearch);
+
 
 
 const yourAPIKey = config.MY_KEY;
