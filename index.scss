@@ -46,7 +46,12 @@ h1 {
 }
 
 .searchResult {
-  display: none;
+display: none;
+flex-direction: column;
+}
+
+hr {
+ width: 100%;
 }
 
 .button {
