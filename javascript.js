@@ -25,7 +25,8 @@ async function getSearchResult(){
      
     const response = await fetch(`https://www.googleapis.com/books/v1/volumes?q=intitle:${keyWordTitle}+inauthor:${keyWordAuthor}&key=${yourAPIKey}`);
     const books = await response.json()
-        .then(books => addResultsInHtml(books))
+        .then(books => addResultsInHtml(books));
+        //.then(addEventOnBookMarkButtons());
 }
 
 function addResultsInHtml(books){
@@ -42,6 +43,7 @@ function addResultsInHtml(books){
         bookMarkElement.classList.add("button");
         bookMarkElement.setAttribute("class", "buttonMark");
         bookMarkElement.setAttribute("value","fav");
+        bookMarkElement.setAttribute("onclick",`addToMyList(${JSON.stringify(book)})`);
 
         const titleBook = document.createElement("h2"); 
         titleBook.innerText = "Titre: " + book.volumeInfo.title;
@@ -70,3 +72,28 @@ function addResultsInHtml(books){
         sectionBook.appendChild(bookElement);
     }
 }
+
+
+function addToMyList(book){
+    sessionStorage.setItem(`${book.id}`,JSON.stringify(book));
+}
+
+
+/*function getBookMarkButton(){
+    const buttonMarks = document.getElementsByClassName("buttonMark");
+    return buttonMarks;
+ }
+
+ function addEventOnBookMarkButtons(){
+    
+    const buttonMarks = getBookMarkButton();
+            console.log(buttonMarks);
+            console.log(buttonMarks.length);
+            console.log(document.getElementsByClassName("buttonMark").length);
+            const button = buttonMarks.item(0);
+            console.log(button);
+            button.addEventListener("click", ()=> {
+                console.log("coucou");
+            });
+        
+ }*/
