@@ -36,7 +36,6 @@ function addResultsInHtml(books){
    
         const bookElement = document.createElement("div");
         bookElement.classList.add("book");
-        bookElement.setAttribute("id", `${book.id}`);
 
         const bookMarkElement = document.createElement("input");
         bookMarkElement.setAttribute("type", "button");
@@ -77,6 +76,24 @@ function addResultsInHtml(books){
 function addToMyList(book){
     sessionStorage.setItem(`${book.id}`,JSON.stringify(book));
 }
+
+function getSessionStorage(){
+    
+    let books = [];
+    for(let i = 0; i< sessionStorage.length;i++){
+       const response = sessionStorage.getItem(sessionStorage.key(i));
+        books.push(JSON.parse(response));
+    }
+    return books;
+}
+
+function displayMyList(){
+    const books = getSessionStorage();
+    console.log (books.length);
+
+}
+
+displayMyList();
 
 
 /*function getBookMarkButton(){
