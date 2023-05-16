@@ -1,21 +1,23 @@
 //Consts definition zone
 const add = document.getElementById("addBook");
+const form = document.getElementById("form");
 const search= document.getElementById("search");
+const searchResults = document.getElementById("searchResults");
 const cancel= document.getElementById("cancel");
 const yourAPIKey = config.MY_KEY;
 
 
 // Events zone
-add.addEventListener("click", () => {
-    document.getElementById("form").style.display="flex";
+add.addEventListener("click",() => {noneToFlex(form)});
+search.addEventListener("click", () => {
+    noneToFlex(searchResults);
+    getSearchResult();
 });
-search.addEventListener("click", noneToFlex, true);
-search.addEventListener("click", getSearchResult, true);
 
 
 //functions zone
-function noneToFlex(){
-    document.getElementById("searchResults").style.display="flex";
+function noneToFlex(elementToFlex){
+    elementToFlex.style.display="flex";
 }
 
 async function getSearchResult(){
@@ -26,7 +28,6 @@ async function getSearchResult(){
     const response = await fetch(`https://www.googleapis.com/books/v1/volumes?q=intitle:${keyWordTitle}+inauthor:${keyWordAuthor}&key=${yourAPIKey}`);
     const books = await response.json()
         .then(books => addResultsInHtml(books));
-        //.then(addEventOnBookMarkButtons());
 }
 
 function addResultsInHtml(books){
@@ -71,7 +72,6 @@ function addResultsInHtml(books){
         sectionBook.appendChild(bookElement);
     }
 }
-
 
 function addToMyList(book){
     sessionStorage.setItem(`${book.id}`,JSON.stringify(book));
@@ -142,23 +142,3 @@ function deleteFromMyList(id){
 }
 
 displayMyList();
-
-
-/*function getBookMarkButton(){
-    const buttonMarks = document.getElementsByClassName("buttonMark");
-    return buttonMarks;
- }
-
- function addEventOnBookMarkButtons(){
-    
-    const buttonMarks = getBookMarkButton();
-            console.log(buttonMarks);
-            console.log(buttonMarks.length);
-            console.log(document.getElementsByClassName("buttonMark").length);
-            const button = buttonMarks.item(0);
-            console.log(button);
-            button.addEventListener("click", ()=> {
-                console.log("coucou");
-            });
-        
- }*/
