@@ -75,6 +75,7 @@ function addResultsInHtml(books){
 
 function addToMyList(book){
     sessionStorage.setItem(`${book.id}`,JSON.stringify(book));
+    displayMyList();
 }
 
 function getSessionStorage(){
@@ -89,8 +90,55 @@ function getSessionStorage(){
 
 function displayMyList(){
     const books = getSessionStorage();
-    console.log (books.length);
+    let bookList = document.getElementById("book-list");
+    bookList.innerHTML="";
 
+    for (let i = 0; i< books.length; i ++){
+
+        const book = books[i];
+
+        const bookElement = document.createElement("div");
+        bookElement.classList.add("book");
+
+        const deleteElement = document.createElement("input");
+        deleteElement.setAttribute("type", "button");
+        deleteElement.classList.add("button");
+        deleteElement.setAttribute("class", "buttonDelete");
+        deleteElement.setAttribute("value","del");
+        deleteElement.setAttribute("onclick",`deleteFromMyList(${JSON.stringify(book.id)})`);
+
+        const titleBook = document.createElement("h2"); 
+        titleBook.innerText = "Titre: " + book.volumeInfo.title;
+
+        const idBook = document.createElement("p");
+        idBook.innerText = "Id: " + book.id;
+
+        const authorBook = document.createElement("p");
+        authorBook.innerText = "Auteur: " + book.volumeInfo.authors[0];
+
+        const descriptionBook = document.createElement("p");
+        descriptionBook.innerText = ("Description: " + book.volumeInfo.description).substring(0,200);
+
+        const imgBook = document.createElement("img");
+        imgBook.classList.add("book__img");
+        imgBook.src = book.volumeInfo.imageLinks == undefined ? "assets/unavailable.png" : book.volumeInfo.imageLinks.thumbnail;
+
+        bookElement.appendChild(deleteElement);
+        bookElement.appendChild(titleBook);
+        bookElement.appendChild(idBook);
+        bookElement.appendChild(authorBook);
+        bookElement.appendChild(descriptionBook);
+        bookElement.appendChild(imgBook);
+
+        bookList.appendChild(bookElement);
+
+    }
+
+}
+
+function deleteFromMyList(id){
+    sessionStorage.removeItem(id);
+    location.reload();
 }
 
 displayMyList();
