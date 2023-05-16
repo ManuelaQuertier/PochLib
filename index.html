@@ -27,7 +27,7 @@
             <label for="author">Auteur</label>
             <input type="text" id="author" name="author" />
           </div>
-          <input type="submit" value="Rechercher" id="search" class="button" />
+          <input type="button" value="Rechercher" id="search" class="button" />
           <input
             type="submit"
             value="Annuler"
@@ -40,29 +40,13 @@
       <div class="searchResult" id="searchResults">
         <hr />
         <h1>Résultats de recherche</h1>
-        <div class="books-Container">
-          <div class="book">1</div>
-
+        <div class="books-Container" id="books-result">
         </div>
       </div>
       <hr />
       <div class="myBooks" id="myBooksContent">
         <h1>Ma poch'liste</h1>
-        <div class="books-Container">
-          <div class="book">
-            <h2>Titre</h2>
-            <p>Id</p>
-            <p>Auteur</p>
-            <p>Description: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur erat velit, sollicitudin id congue et, efficitur eget neque. Proin sagittis velit egestas lorem condimentum, at cursus mauris imperdiet. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Nunc cursus metus non aliquet venenatis. Integer augue dui, pretium nec ultrices at, sollicitudin vitae ex. Nullam imperdiet interdum sagittis. Curabitur id interdum eros, quis mollis neque. Suspendisse potenti. Aliquam erat volutpat. Praesent ullamcorper at nisi sed feugiat.</p>
-            <img src="assets/unavailable.png" alt="unavailable" class="book__img" />
-          </div>
-          <div class="book">
-            <h2>Titre</h2>
-            <p>Id</p>
-            <p>Auteur</p>
-            <p>Description: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur erat velit, sollicitudin id congue et, efficitur eget neque. Proin sagittis velit egestas lorem condimentum, at cursus mauris imperdiet. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Nunc cursus metus non aliquet venenatis. Integer augue dui, pretium nec ultrices at, sollicitudin vitae ex. Nullam imperdiet interdum sagittis. Curabitur id interdum eros, quis mollis neque. Suspendisse potenti. Aliquam erat volutpat. Praesent ullamcorper at nisi sed feugiat.</p>
-            <img src="assets/unavailable.png" alt="unavailable" class="book__img" />
-          </div>
+        <div class="books-Container" id="book-list">
         </div>
       </div>
       </div>
