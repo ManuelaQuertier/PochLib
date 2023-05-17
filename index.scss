@@ -9,7 +9,7 @@ $Secondary: lightgrey;
 .logo {
   img {
     display: block;
-    width: 25%;
+    width: min(40vw, 300px);
     height: auto;
     margin: auto;
   }
@@ -22,8 +22,23 @@ body {
 h1 {
   text-align: center;
   font-family: $fontTitle;
+  font-size: min(7vw, 45px);
+  margin-top: 0;
 }
 
+h2{
+  font-size: min(5vw, 25px);
+}
+
+hr {
+  margin-bottom: 5vw;
+}
+
+
+p {
+  font-size: min(4vw, 15px);
+  margin-top: 0;
+}
 
 .newBook {
   display: flex;
@@ -40,8 +55,13 @@ h1 {
     display: flex;
     flex-direction: column;
     input {
-      margin: 10px;
+      margin-bottom: 10px;
+      margin-top: 0;
       padding: 5px;
+      font-size: min(3vw, 17px);
+    }
+    label {
+      font-size: min(4vw, 21px);
     }
   }
 }
@@ -62,7 +82,7 @@ hr {
   border: none;
   color: white;
   font-family: $fontGeneral;
-  font-size: 0.7rem;
+  font-size: min(3.5vw, 17px);
   margin: 6px 2px;
   cursor: pointer;
   border-radius: 4px;
@@ -84,9 +104,14 @@ hr {
   @media screen and (min-width:600px) {
    grid-template-columns: repeat(2, 1fr);
   }
+  @media screen and (min-width:1130px) {
+    grid-template-columns: repeat(3, 1fr);
+   }
 }
 
 .book {
+  display: flex;
+  flex-direction: column;
   background-color: $Secondary;
   border: 1px solid black;
   padding: 15px;

@@ -36,6 +36,7 @@ function addResultsInHtml(books){
         const book = books.items[i];
    
         const bookMarkElement = document.createElement("i");
+        bookMarkElement.setAttribute("style","align-self: flex-end;");
         if(sessionStorage.getItem(book.id)){
             bookMarkElement.setAttribute("class","fa-solid fa-bookmark");
         }else{
@@ -102,6 +103,7 @@ function displayMyList(){
         bookElement.classList.add("book");
 
         const deleteElement = document.createElement("i");
+        deleteElement.setAttribute("style","align-self: flex-end;");
         deleteElement.setAttribute("class", "fa-solid fa-trash");
         deleteElement.setAttribute("onclick",`deleteFromMyList(${JSON.stringify(book.id)})`);
 
