@@ -56,13 +56,13 @@ function addResultsInHtml(books){
                 bookMarkElement.setAttribute("onclick",`addToMyList(${JSON.stringify(book)})`);
             }
         
-        const bookElement = createElement(book,bookMarkElement);
+        const bookElement = createElements(book,bookMarkElement);
             
         sectionBook.appendChild(bookElement);
     }
 }
 
-function createElement(book, iconElement){
+function createElements(book, iconElement){
 
     const bookElement = document.createElement("div");
     bookElement.classList.add("book");
@@ -129,7 +129,7 @@ function displayMyList(){
         deleteElement.setAttribute("class", "fa-solid fa-trash");
         deleteElement.setAttribute("onclick",`deleteFromMyList(${JSON.stringify(book.id)})`);
 
-        const bookElement = createElement(book,deleteElement);
+        const bookElement = createElements(book,deleteElement);
 
         bookList.appendChild(bookElement);
     }
