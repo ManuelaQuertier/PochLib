@@ -66,8 +66,14 @@ hr {
   margin: 6px 2px;
   cursor: pointer;
   border-radius: 4px;
+  &:hover{
+    background-color: darken($Primary, 20%);
+  }
   &--cancel {
     background-color: rgb(250, 98, 78);
+    &:hover {
+      background-color: darken(rgb(250, 98, 78), 20%);
+    }
   }
 }
 
