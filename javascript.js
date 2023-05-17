@@ -31,6 +31,15 @@ async function getSearchResult(){
 }
 
 function addResultsInHtml(books){
+
+    if (books.totalItems === 0){
+        const noResult = document.getElementById("no-result");
+        const message = document.createElement("h2");
+        message.innerText = "Aucun livre n'a été trouvé";
+
+        noResult.appendChild(message);
+    }
+
     for (let i = 0; i< books.items.length; i ++){
 
         const book = books.items[i];
@@ -57,7 +66,7 @@ function addResultsInHtml(books){
         authorBook.innerText = "Auteur: " + book.volumeInfo.authors[0];
 
         const descriptionBook = document.createElement("p");
-        descriptionBook.innerText = ("Description: " + book.volumeInfo.description).substring(0,200);
+        descriptionBook.innerText = book.volumeInfo.description == undefined ? "Description: Information manquante" : ("Description: " + book.volumeInfo.description).substring(0,200);
 
         const imgBook = document.createElement("img");
         imgBook.classList.add("book__img");
@@ -76,8 +85,12 @@ function addResultsInHtml(books){
 }
 
 function addToMyList(book){
+    if (sessionStorage.getItem(book.id)){
+        alert ("Vous ne pouvez ajouter deux fois le même livre");
+    } else {
     sessionStorage.setItem(`${book.id}`,JSON.stringify(book));
     displayMyList();
+}
 }
 
 function getSessionStorage(){
@@ -138,7 +151,7 @@ function displayMyList(){
 
 function deleteFromMyList(id){
     sessionStorage.removeItem(id);
-    location.reload();
+    displayMyList();
 }
 
 displayMyList();

@@ -22,10 +22,6 @@ h2 {
   font-size: min(5vw, 25px);
 }
 
-hr {
-  margin-bottom: 5vw;
-}
-
 p {
   font-size: min(4vw, 15px);
   margin-top: 0;
@@ -57,13 +53,28 @@ p {
   font-size: min(4vw, 21px);
 }
 
+.hr {
+  margin-top: 6vw;
+  margin-bottom: 6vw;
+  width: 100%;
+}
+.hr--primary {
+  border-top: 3px double #82c9b8;
+  width: 0;
+  animation: separator-width 1s ease-out forwards;
+}
+
+@keyframes separator-width {
+  0% {
+    width: 0;
+  }
+  100% {
+    width: 100%;
+  }
+}
 .searchResult {
   display: none;
   flex-direction: column;
-}
-
-hr {
-  width: 100%;
 }
 
 .button {
@@ -107,7 +118,7 @@ hr {
 .book {
   display: flex;
   flex-direction: column;
-  background-color: lightgrey;
+  background-color: #e0e7e6;
   border: 1px solid black;
   padding: 15px;
 }
@@ -117,6 +128,11 @@ hr {
   object-fit: contain;
   display: block;
   margin: auto;
+}
+
+#no-result {
+  text-align: center;
+  color: #89a59f;
 }
 
 /*# sourceMappingURL=index.css.map */

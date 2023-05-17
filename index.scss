@@ -4,7 +4,7 @@ $fontTitle: "Dosis", sans-serif;
 $fontGeneral: "Oxygen", sans-serif;
 
 $Primary: #82c9b8;
-$Secondary: lightgrey;
+$Secondary: mix($Primary, lightgrey, 20%);
 
 .logo {
   img {
@@ -29,11 +29,6 @@ h1 {
 h2{
   font-size: min(5vw, 25px);
 }
-
-hr {
-  margin-bottom: 5vw;
-}
-
 
 p {
   font-size: min(4vw, 15px);
@@ -66,13 +61,28 @@ p {
   }
 }
 
+.hr {
+  margin-top: 6vw;
+  margin-bottom: 6vw;
+  width: 100%;
+  &--primary{
+    border-top: 3px double $Primary;
+    width: 0;
+    animation: separator-width 1s ease-out forwards;
+  }
+}
+@keyframes separator-width {
+  0% {
+    width: 0;
+  }
+  100% {
+    width: 100%;
+  }
+}
+
 .searchResult {
 display: none;
 flex-direction: column;
-}
-
-hr {
- width: 100%;
 }
 
 .button {
@@ -112,7 +122,7 @@ hr {
 .book {
   display: flex;
   flex-direction: column;
-  background-color: $Secondary;
+  background-color: lighten($Secondary, 10%);
   border: 1px solid black;
   padding: 15px;
   &__img {
@@ -122,4 +132,9 @@ hr {
     display: block;
     margin: auto;
   }
+}
+
+#no-result{
+  text-align: center;
+  color: darken($Secondary, 20%);
 }
