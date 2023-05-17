@@ -4,12 +4,12 @@ $fontTitle: "Dosis", sans-serif;
 $fontGeneral: "Oxygen", sans-serif;
 
 $Primary: #82c9b8;
-$Secondary: lightgrey;
+$Secondary: mix($Primary, lightgrey, 20%);
 
 .logo {
   img {
     display: block;
-    width: 25%;
+    width: min(40vw, 300px);
     height: auto;
     margin: auto;
   }
@@ -22,8 +22,18 @@ body {
 h1 {
   text-align: center;
   font-family: $fontTitle;
+  font-size: min(7vw, 45px);
+  margin-top: 0;
 }
 
+h2{
+  font-size: min(5vw, 25px);
+}
+
+p {
+  font-size: min(4vw, 15px);
+  margin-top: 0;
+}
 
 .newBook {
   display: flex;
@@ -40,19 +50,39 @@ h1 {
     display: flex;
     flex-direction: column;
     input {
-      margin: 10px;
+      margin-bottom: 10px;
+      margin-top: 0;
       padding: 5px;
+      font-size: min(3vw, 17px);
     }
+    label {
+      font-size: min(4vw, 21px);
+    }
+  }
+}
+
+.hr {
+  margin-top: 6vw;
+  margin-bottom: 6vw;
+  width: 100%;
+  &--primary{
+    border-top: 3px double $Primary;
+    width: 0;
+    animation: separator-width 1s ease-out forwards;
+  }
+}
+@keyframes separator-width {
+  0% {
+    width: 0;
+  }
+  100% {
+    width: 100%;
   }
 }
 
 .searchResult {
 display: none;
 flex-direction: column;
-}
-
-hr {
- width: 100%;
 }
 
 .button {
@@ -62,7 +92,7 @@ hr {
   border: none;
   color: white;
   font-family: $fontGeneral;
-  font-size: 0.7rem;
+  font-size: min(3.5vw, 17px);
   margin: 6px 2px;
   cursor: pointer;
   border-radius: 4px;
@@ -84,10 +114,15 @@ hr {
   @media screen and (min-width:600px) {
    grid-template-columns: repeat(2, 1fr);
   }
+  @media screen and (min-width:1130px) {
+    grid-template-columns: repeat(3, 1fr);
+   }
 }
 
 .book {
-  background-color: $Secondary;
+  display: flex;
+  flex-direction: column;
+  background-color: lighten($Secondary, 10%);
   border: 1px solid black;
   padding: 15px;
   &__img {
@@ -97,4 +132,9 @@ hr {
     display: block;
     margin: auto;
   }
+}
+
+#no-result{
+  text-align: center;
+  color: darken($Secondary, 20%);
 }
