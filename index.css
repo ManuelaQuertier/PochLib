@@ -58,8 +58,14 @@ hr {
   cursor: pointer;
   border-radius: 4px;
 }
+.button:hover {
+  background-color: #45a08a;
+}
 .button--cancel {
   background-color: rgb(250, 98, 78);
+}
+.button--cancel:hover {
+  background-color: #dc1f06;
 }
 
 .books-Container {

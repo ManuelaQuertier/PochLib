@@ -35,16 +35,17 @@ function addResultsInHtml(books){
 
         const book = books.items[i];
    
+        const bookMarkElement = document.createElement("i");
+        if(sessionStorage.getItem(book.id)){
+            bookMarkElement.setAttribute("class","fa-solid fa-bookmark");
+        }else{
+        bookMarkElement.setAttribute("class","fa-regular fa-bookmark");
+        bookMarkElement.setAttribute("onclick",`addToMyList(${JSON.stringify(book)})`);
+        }
+
         const bookElement = document.createElement("div");
         bookElement.classList.add("book");
-
-        const bookMarkElement = document.createElement("input");
-        bookMarkElement.setAttribute("type", "button");
-        bookMarkElement.classList.add("button");
-        bookMarkElement.setAttribute("class", "buttonMark");
-        bookMarkElement.setAttribute("value","fav");
-        bookMarkElement.setAttribute("onclick",`addToMyList(${JSON.stringify(book)})`);
-
+        
         const titleBook = document.createElement("h2"); 
         titleBook.innerText = "Titre: " + book.volumeInfo.title;
 
@@ -100,11 +101,8 @@ function displayMyList(){
         const bookElement = document.createElement("div");
         bookElement.classList.add("book");
 
-        const deleteElement = document.createElement("input");
-        deleteElement.setAttribute("type", "button");
-        deleteElement.classList.add("button");
-        deleteElement.setAttribute("class", "buttonDelete");
-        deleteElement.setAttribute("value","del");
+        const deleteElement = document.createElement("i");
+        deleteElement.setAttribute("class", "fa-solid fa-trash");
         deleteElement.setAttribute("onclick",`deleteFromMyList(${JSON.stringify(book.id)})`);
 
         const titleBook = document.createElement("h2"); 
