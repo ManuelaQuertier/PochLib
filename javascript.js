@@ -13,12 +13,15 @@ search.addEventListener("click", () => {
     noneToFlex(searchResults);
     getSearchResult();
 });
-
+cancel.addEventListener("click", ()=>{
+    location.reload();
+})
 
 //functions zone
 function noneToFlex(elementToFlex){
     elementToFlex.style.display="flex";
 }
+
 
 //Get books from API
 async function getSearchResult(){
