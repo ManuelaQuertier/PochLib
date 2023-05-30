@@ -11,11 +11,11 @@ II. CONFIG JAVASCRIPT FILES
 
   1. In your new folder "PochLib", create a file named "config.js"
   2. Open the folder "PochLib" in your code editor
-  3. In your file "config.js" copy and paste the code below :
+  3. In your file "config.js" copy and paste the code below and see step III to get your API key:
 
 var config = {
-    MY_KEY : 'Your API Key', (see step III)
-  }
+    MY_KEY : 'Your API Key',
+  } 
   
 III. GET YOUR KEY 
 
