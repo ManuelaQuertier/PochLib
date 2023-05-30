@@ -21,6 +21,7 @@ III. GET YOUR KEY
 
   1.To get your API key follow the instructions of the site of the API google Book :
 https://developers.google.com/books/docs/v1/using?hl=fr#APIKey
+  
   2. Copy and Paste your API KEY in the file 'config.js' inside the cotes, instead of 'Your API Key'
 
 IV. LAUNCH THE APPLICATION
