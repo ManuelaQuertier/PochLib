@@ -35,13 +35,14 @@ p {
 }
 
 .form {
-  display: none;
+  display: flex;
   flex-direction: column;
   width: 100%;
 }
 .form__field {
   display: flex;
   flex-direction: column;
+  border: 0;
 }
 .form__field input {
   margin-bottom: 10px;
@@ -53,12 +54,9 @@ p {
   font-size: min(4vw, 21px);
 }
 
-.hr {
+hr {
   margin-top: 6vw;
   margin-bottom: 6vw;
-  width: 100%;
-}
-.hr--primary {
   border-top: 3px double #82c9b8;
   width: 0;
   animation: separator-width 1s ease-out forwards;
@@ -73,7 +71,7 @@ p {
   }
 }
 .searchResult {
-  display: none;
+  display: flex;
   flex-direction: column;
 }
 
@@ -88,6 +86,11 @@ p {
   margin: 6px 2px;
   cursor: pointer;
   border-radius: 4px;
+}
+.button--new {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
 }
 .button:hover {
   background-color: #45a08a;
