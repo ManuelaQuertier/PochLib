@@ -1,20 +1,21 @@
 //Consts definition zone
-const add = document.getElementById("addBook");
-const form = document.getElementById("form");
+const formTitle = document.getElementById("form-title");
+/*
 const search= document.getElementById("search");
 const searchResults = document.getElementById("searchResults");
 const cancel= document.getElementById("cancel");
 
 
+
 // Events zone
-add.addEventListener("click",() => {noneToFlex(form)});
+
 search.addEventListener("click", () => {
     noneToFlex(searchResults);
     getSearchResult();
 });
 cancel.addEventListener("click", ()=>{
     location.reload();
-})
+})*/
 
 //functions zone
 function noneToFlex(elementToFlex){
@@ -37,7 +38,7 @@ function addResultsInHtml(books){
 
     if (books.totalItems === 0){
         const noResult = document.getElementById("no-result");
-        const message = document.createElement("h2");
+        const message = document.createElement("h3");
         message.innerText = "Aucun livre n'a été trouvé";
 
         noResult.appendChild(message);
@@ -69,7 +70,7 @@ function createElements(book, iconElement){
     const bookElement = document.createElement("div");
     bookElement.classList.add("book");
 
-    const titleBook = document.createElement("h2"); 
+    const titleBook = document.createElement("h3"); 
     titleBook.innerText = "Titre: " + book.volumeInfo.title;
 
     const idBook = document.createElement("p");
@@ -141,5 +142,18 @@ function deleteFromMyList(id){
     sessionStorage.removeItem(id);
     displayMyList();
 }
+function displayPage(){
+    formTitle.insertAdjacentHTML(
+        "afterend",
+        "<button type='button' class='button' id='addBook'>Ajouter un Livre</button>");
+        const add = document.getElementById("addBook");
+        add.addEventListener("click",() => {displayForm(add)});
+}
 
+function displayForm(add){
+    add.insertAdjacentHTML("afterend",
+    '<form action="#" id="form" class="form"></form>');
+    let form = document.getElementById("form");
+}
+displayPage();
 displayMyList();

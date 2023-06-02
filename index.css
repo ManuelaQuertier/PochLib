@@ -11,14 +11,14 @@ body {
   font-family: "Oxygen", sans-serif;
 }
 
-h1 {
+h2 {
   text-align: center;
   font-family: "Dosis", sans-serif;
   font-size: min(7vw, 45px);
   margin-top: 0;
 }
 
-h2 {
+h3 {
   font-size: min(5vw, 25px);
 }
 
