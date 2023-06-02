@@ -4,7 +4,6 @@ const form = document.getElementById("form");
 const search= document.getElementById("search");
 const searchResults = document.getElementById("searchResults");
 const cancel= document.getElementById("cancel");
-const yourAPIKey = config.MY_KEY;
 
 
 // Events zone
@@ -29,7 +28,7 @@ async function getSearchResult(){
     const keyWordTitle= document.getElementById("bookTitle").value;
     const keyWordAuthor= document.getElementById("author").value;
      
-    const response = await fetch(`https://www.googleapis.com/books/v1/volumes?q=intitle:${keyWordTitle}+inauthor:${keyWordAuthor}&key=${yourAPIKey}`);
+    const response = await fetch(`https://www.googleapis.com/books/v1/volumes?q=intitle:${keyWordTitle}+inauthor:${keyWordAuthor}`);
     const books = await response.json()
         .then(books => addResultsInHtml(books));
 }
