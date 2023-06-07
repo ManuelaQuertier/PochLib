@@ -239,7 +239,7 @@ function displayForm(add){
     cancel.addEventListener("click", () => {
         add.style.display="block";
         document.getElementById("formSection").innerHTML="";
-        document.getElementById("form").innerHTML="";
+        document.getElementById("searchResults").innerHTML="";
     })
   
 }
