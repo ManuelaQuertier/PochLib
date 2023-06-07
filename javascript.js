@@ -24,8 +24,9 @@ async function getSearchResult(inputTitle, inputAuthor){
 
 function addResultsInHtml(books){
 
-    hr.insertAdjacentHTML("afterend", "<div class='searchResult' id='searchResults'>");
+    
     const searchResults = document.getElementById("searchResults");
+    searchResults.innerHTML= "";
 
     const searchSectiontitle = document.createElement("h2");
     searchSectiontitle.innerText= "Résultats de recherche";
@@ -155,19 +156,29 @@ function displayPage(){
     formTitle.insertAdjacentHTML(
         "afterend",
         "<button type='button' class='button button--new' id='addBook'>Ajouter un Livre</button>");
-        const add = document.getElementById("addBook");
-        add.addEventListener("click",() => {displayForm(add)});
+    
+    const add = document.getElementById("addBook");
+
+    add.insertAdjacentHTML(
+        "afterend",   
+        "<section id='formSection'></section>");
+    
+    add.addEventListener("click",() => {displayForm(add)});
+    hr.insertAdjacentHTML("afterend", "<div class='searchResult' id='searchResults'>");    
     myPL.insertAdjacentHTML("afterend", "<section class='books-Container' id='book-list'></section>");
     displayMyList();
 }
 
 function displayForm(add){
 
-    add.insertAdjacentHTML("afterend",
-    '<form action="javascript:void(0);" id="form" class="form"></form>');
+    const formSection = document.getElementById("formSection")
+
     add.style.display="none";
 
-    let form = document.getElementById("form");
+    const form = document.createElement("form");
+    form.setAttribute("action", "javascript:void(0);");
+    form.setAttribute("id", "form");
+    form.setAttribute("class", "form");
 
     const fieldTitle = document.createElement("fieldset");
     fieldTitle.setAttribute("class","form__field");
@@ -220,10 +231,16 @@ function displayForm(add){
     form.appendChild(searchButton);
     form.appendChild(cancelButton);
 
+    formSection.appendChild(form);
+
     search.addEventListener("click", () => {
         getSearchResult(inputTitle, inputAuthor);
     });    
-
+    cancel.addEventListener("click", () => {
+        add.style.display="block";
+        document.getElementById("formSection").innerHTML="";
+        document.getElementById("form").innerHTML="";
+    })
   
 }
 displayPage();

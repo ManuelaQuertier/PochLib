@@ -54,6 +54,10 @@ p {
   font-size: min(4vw, 21px);
 }
 
+svg :hover {
+  cursor: pointer;
+}
+
 hr {
   margin-top: 6vw;
   margin-bottom: 6vw;
