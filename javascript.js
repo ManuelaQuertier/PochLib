@@ -2,14 +2,6 @@
 const formTitle = document.getElementById("form-title");
 const hr = document.getElementById("hr");
 const myPL = document.getElementById("myPL");
-/*
-const cancel= document.getElementById("cancel");
-
-cancel.addEventListener("click", ()=>{
-    location.reload();
-})*/
-
-//functions zone
 
 //Get books from API
 async function getSearchResult(inputTitle, inputAuthor){
@@ -152,6 +144,7 @@ function deleteFromMyList(id){
     sessionStorage.removeItem(id);
     displayMyList();
 }
+
 function displayPage(){
     formTitle.insertAdjacentHTML(
         "afterend",
