@@ -14,28 +14,12 @@ async function getSearchResult(inputTitle, inputAuthor){
         .then(books => addResultsInHtml(books));
 }
 
+//Display the search results
 function addResultsInHtml(books){
-
-    
+  
     const searchResults = document.getElementById("searchResults");
     searchResults.innerHTML= "";
-
-    const searchSectiontitle = document.createElement("h2");
-    searchSectiontitle.innerText= "Résultats de recherche";
-
-    const noResultsSection = document.createElement("div");
-    noResultsSection.setAttribute("id", "no-results");
-
-    const bookContainer = document.createElement("section");
-    bookContainer.setAttribute("class", "books-Container");
-    bookContainer.setAttribute("id", "books-result");
-
-    const hrMyPochList = document.createElement("hr");
-
-    searchResults.appendChild(searchSectiontitle);
-    searchResults.appendChild(noResultsSection);
-    searchResults.appendChild(bookContainer);
-    searchResults.appendChild(hrMyPochList);
+    createSearchResultsSection(searchResults);
 
     if (books.totalItems === 0){
         const noResults = document.getElementById("no-results");
@@ -60,13 +44,35 @@ function addResultsInHtml(books){
                 bookMarkElement.setAttribute("onclick",`addToMyList(${JSON.stringify(book)})`);
             }
         
-        const bookElement = createElements(book,bookMarkElement);
+        const bookElement = createBookElements(book,bookMarkElement);
 
         sectionBook.appendChild(bookElement);
     }
 }
 
-function createElements(book, iconElement){
+//Create the search results section
+function createSearchResultsSection(searchResults){
+
+    const searchSectiontitle = document.createElement("h2");
+    searchSectiontitle.innerText= "Résultats de recherche";
+
+    const noResultsSection = document.createElement("div");
+    noResultsSection.setAttribute("id", "no-results");
+
+    const bookContainer = document.createElement("section");
+    bookContainer.setAttribute("class", "books-Container");
+    bookContainer.setAttribute("id", "books-result");
+
+    const hrMyPochList = document.createElement("hr");
+
+    searchResults.appendChild(searchSectiontitle);
+    searchResults.appendChild(noResultsSection);
+    searchResults.appendChild(bookContainer);
+    searchResults.appendChild(hrMyPochList);
+}
+
+//Create the books elements
+function createBookElements(book, iconElement){
 
     const bookElement = document.createElement("div");
     bookElement.classList.add("book");
@@ -108,6 +114,7 @@ function addToMyList(book){
     }
 }
 
+//retrieve books from the session storage
 function getSessionStorage(){
     
     let books = [];
@@ -118,6 +125,7 @@ function getSessionStorage(){
     return books;
 }
 
+//display the PochList
 function displayMyList(){
 
     const books = getSessionStorage();
@@ -134,17 +142,97 @@ function displayMyList(){
         deleteElement.setAttribute("class", "fa-solid fa-trash");
         deleteElement.setAttribute("onclick",`deleteFromMyList(${JSON.stringify(book.id)})`);
 
-        const bookElement = createElements(book,deleteElement);
+        const bookElement = createBookElements(book,deleteElement);
 
         bookList.appendChild(bookElement);
     }
 }
 
+//Delete a book from the PochList
 function deleteFromMyList(id){
     sessionStorage.removeItem(id);
     displayMyList();
 }
 
+//Display the search form
+function displayForm(add){
+
+    const formSection = document.getElementById("formSection")
+
+    add.style.display="none";
+
+    const form = createForm();
+
+    formSection.appendChild(form);
+
+    const inputTitle = document.getElementById("bookTitle");
+    const inputAuthor = document.getElementById("author");
+
+    search.addEventListener("click", () => {
+        getSearchResult(inputTitle, inputAuthor);
+    });    
+    cancel.addEventListener("click", () => {
+        add.style.display="block";
+        document.getElementById("formSection").innerHTML="";
+        document.getElementById("searchResults").innerHTML="";
+    })
+  
+}
+
+//Create the html form
+ function createForm(){
+
+    const form = document.createElement("form");
+    form.setAttribute("action", "javascript:void(0);");
+    form.setAttribute("id", "form");
+    form.setAttribute("class", "form");
+
+    const fieldTitle = createField("bookTitle","Titre du livre");
+    const fieldAuthor = createField("author", "Auteur");
+    const searchButton = createButton("submit","Rechercher", "search", "button");
+    const cancelButton = createButton("button","Annuler","cancel","button button--cancel");
+
+    form.appendChild(fieldTitle);
+    form.appendChild(fieldAuthor);
+    form.appendChild(searchButton);
+    form.appendChild(cancelButton);
+
+    return form;
+ }
+
+ //Create fields for the form
+function createField(fieldName,labelName){
+    const field = document.createElement("fieldset");
+    field.setAttribute("class","form__field");
+
+    const label = document.createElement("label");
+    label.setAttribute("for",fieldName);
+    label.innerText = labelName;
+
+    const input = document.createElement("input");
+    input.setAttribute("type", "text");
+    input.setAttribute("id", fieldName);
+    input.setAttribute("name", fieldName);
+    input.setAttribute("required","");
+
+    field.appendChild(label);
+    field.appendChild(input);
+
+    return field;
+}
+
+//Create buttons for the form
+function createButton(type, value, id, className){
+    const button = document.createElement("input");
+    button.setAttribute("type", type);
+    button.setAttribute("value", value);
+    button.setAttribute("id", id);
+    button.setAttribute("class",className);
+
+    return button;
+}
+
+//Display the Page
 function displayPage(){
     formTitle.insertAdjacentHTML(
         "afterend",
@@ -162,78 +250,4 @@ function displayPage(){
     displayMyList();
 }
 
-function displayForm(add){
-
-    const formSection = document.getElementById("formSection")
-
-    add.style.display="none";
-
-    const form = document.createElement("form");
-    form.setAttribute("action", "javascript:void(0);");
-    form.setAttribute("id", "form");
-    form.setAttribute("class", "form");
-
-    const fieldTitle = document.createElement("fieldset");
-    fieldTitle.setAttribute("class","form__field");
-
-    const labelTitle = document.createElement("label");
-    labelTitle.setAttribute("for","bookTitle");
-    labelTitle.innerText = "Titre du livre";
-
-    const inputTitle = document.createElement("input");
-    inputTitle.setAttribute("type", "text");
-    inputTitle.setAttribute("id", "bookTitle");
-    inputTitle.setAttribute("name", "bookTitle");
-    inputTitle.setAttribute("required","");
-
-    fieldTitle.appendChild(labelTitle);
-    fieldTitle.appendChild(inputTitle);
-
-
-    const fieldAuthor = document.createElement("fieldset");
-    fieldAuthor.setAttribute("class","form__field");
-
-    const labelAuthor = document.createElement("label");
-    labelAuthor.setAttribute("for","author");
-    labelAuthor.innerText = "Auteur";
-
-    const inputAuthor = document.createElement("input");
-    inputTitle.setAttribute("type", "text");
-    inputTitle.setAttribute("id", "author");
-    inputTitle.setAttribute("name", "author");
-    inputTitle.setAttribute("required","");
-
-    fieldAuthor.appendChild(labelAuthor);
-    fieldAuthor.appendChild(inputAuthor);
-
-
-    const searchButton = document.createElement("input");
-    searchButton.setAttribute("type", "submit");
-    searchButton.setAttribute("value", "Rechercher");
-    searchButton.setAttribute("id", "search");
-    searchButton.setAttribute("class","button");
-
-    const cancelButton = document.createElement("input");
-    cancelButton.setAttribute("type", "button");
-    cancelButton.setAttribute("value", "Annuler");
-    cancelButton.setAttribute("id", "cancel");
-    cancelButton.setAttribute("class","button button--cancel");
-
-    form.appendChild(fieldTitle);
-    form.appendChild(fieldAuthor);
-    form.appendChild(searchButton);
-    form.appendChild(cancelButton);
-
-    formSection.appendChild(form);
-
-    search.addEventListener("click", () => {
-        getSearchResult(inputTitle, inputAuthor);
-    });    
-    cancel.addEventListener("click", () => {
-        add.style.display="block";
-        document.getElementById("formSection").innerHTML="";
-        document.getElementById("searchResults").innerHTML="";
-    })
-  
-}
 displayPage();
