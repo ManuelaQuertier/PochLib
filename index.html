@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link href="index.css" rel="stylesheet" />
     <script src="https://kit.fontawesome.com/34932b4f4d.js" crossorigin="anonymous"></script>
+    <script  src="javascript.js" defer></script>
   </head>
   <body>
   <header>
@@ -13,45 +14,12 @@
       <img src="assets/logo.svg" alt="logo" />
     </div>
   </header>
-    <main class="container">
-      <div class="newBook">
-        <h1 class="form__title">Nouveau Livre</h1>
-        <button type="button" class="button" id="addBook">
-          Ajouter un Livre
-        </button>
-        <form action="#" id="form" class="form">
-          <div class="form__field">
-            <label for="bookTitle">Titre du livre</label>
-            <input type="text" id="bookTitle" name="bookTitle" required/>
-          </div>
-          <div class="form__field">
-            <label for="author">Auteur</label>
-            <input type="text" id="author" name="author" required/>
-          </div>
-          <input type="button" value="Rechercher" id="search" class="button"/>
-          <input
-            type="submit"
-            value="Annuler"
-            id="cancel"
-            class="button button--cancel"
-          />
-        </form>
-      </div>
-  
-      <div class="searchResult" id="searchResults">
-        <hr class="hr"/>
-        <h1>Résultats de recherche</h1>
-        <div id="no-result"></div>
-        <div class="books-Container" id="books-result">
-        </div>
-      </div>
-      <hr Class="hr hr--primary"/>
+    <main class="container" id="myBooks">
+        <h2 class="form__title" id="form-title">Nouveau Livre</h2>
+        <hr id="hr">
       <div class="myBooks" id="myBooksContent">
-        <h1>Ma poch'liste</h1>
-        <div class="books-Container" id="book-list">
-        </div>
+        <h2 id="myPL">Ma poch'liste</h2>
       </div>
     </main>
-    <script  src="javascript.js"></script>
   </body>
 </html>
