@@ -167,10 +167,7 @@ function displayForm(add){
 
     const inputTitle = document.getElementById("bookTitle");
     const inputAuthor = document.getElementById("author");
-
-    search.addEventListener("click", () => {
-        getSearchResult(inputTitle, inputAuthor);
-    });    
+    
     cancel.addEventListener("click", () => {
         add.style.display="block";
         document.getElementById("formSection").innerHTML="";
@@ -186,6 +183,7 @@ function displayForm(add){
     form.setAttribute("action", "javascript:void(0);");
     form.setAttribute("id", "form");
     form.setAttribute("class", "form");
+    form.setAttribute("onsubmit","return validForm()")
 
     const fieldTitle = createField("bookTitle","Titre du livre");
     const fieldAuthor = createField("author", "Auteur");
@@ -200,6 +198,17 @@ function displayForm(add){
     return form;
  }
 
+ //Check the form and if true call getSearchResult()
+ function validForm(){
+    const inputTitle = document.getElementById("bookTitle");
+    const inputAuthor = document.getElementById('author');
+    if(inputTitle.value !="" || inputAuthor.value !=""){
+        getSearchResult(inputTitle, inputAuthor);
+        return true;
+    } else {
+    return false;
+    }
+ }
  //Create fields for the form
 function createField(fieldName,labelName){
     const field = document.createElement("fieldset");
