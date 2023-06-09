@@ -245,7 +245,7 @@ function displayPage(){
         "<section id='formSection'></section>");
     
     add.addEventListener("click",() => {displayForm(add)});
-    hr.insertAdjacentHTML("afterend", "<div class='searchResult' id='searchResults'>");    
+    hr.insertAdjacentHTML("afterend", "<section class='searchResult' id='searchResults'></section>");    
     myPL.insertAdjacentHTML("afterend", "<section class='books-Container' id='book-list'></section>");
     displayMyList();
 }
