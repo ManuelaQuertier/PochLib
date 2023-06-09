@@ -167,10 +167,7 @@ function displayForm(add){
 
     const inputTitle = document.getElementById("bookTitle");
     const inputAuthor = document.getElementById("author");
-
-    //search.addEventListener("click", () => {
-       // getSearchResult(inputTitle, inputAuthor);
-    //});    
+    
     cancel.addEventListener("click", () => {
         add.style.display="block";
         document.getElementById("formSection").innerHTML="";
